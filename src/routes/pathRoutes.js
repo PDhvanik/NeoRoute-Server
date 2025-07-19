@@ -4,13 +4,13 @@ import { updateEdgeWeight } from "../services/updateGraph.js";
 
 const router = express.Router();
 
-router.get("/api/find-path", async (req, res) => {
+router.get("/find-path", async (req, res) => {
     const { start, end } = req.query;
     const { path, totalCost } = await findShortestPath(start, end);
     res.json({ path, totalCost });
 });
 
-router.post("/api/update-road", async (req, res) => {
+router.post("/update-road", async (req, res) => {
     const { start, end, factor } = req.body;
     const result = await updateEdgeWeight(start, end, factor);
     res.json(result);
